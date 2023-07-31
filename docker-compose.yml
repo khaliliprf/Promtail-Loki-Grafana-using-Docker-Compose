@@ -9,7 +9,7 @@ services:
     ports:
       - "3100:3100"
     volumes:
-      - /root/promtailloki/loki:/etc/loki
+      - ./loki:/etc/loki
     command: -config.file=/etc/loki/loki-config.yaml
     networks:
       - loki
@@ -18,7 +18,7 @@ services:
     image: grafana/promtail:2.2.1
     volumes:
       - /var/log:/var/log
-      - /root/promtailloki/promtail:/etc/promtail 
+      - ./promtail:/etc/promtail
     command: -config.file=/etc/promtail/promtail-config.yaml
     networks:
       - loki
